@@ -103,8 +103,8 @@ You can open SearxNG directly at:
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd mcp-stack
+git clone https://github.com/vtavakkoli/mcp-test.git
+cd mcp-test
 ```
 
 ### 2. Start the entire stack
