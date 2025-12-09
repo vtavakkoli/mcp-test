@@ -1,0 +1,57 @@
+services:
+  backend:
+    build: ./backend
+    container_name: mcp-backend
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=ministral-3:3b
+      - MCP_MATRIX_URL=http://mcp-matrix:6101
+      - MCP_HANOI_URL=http://mcp-hanoi:6102
+      - SEARXNG_URL=http://searxng:8080
+    ports:
+      - "6100:6100"
+    depends_on:
+      - mcp-matrix
+      - mcp-hanoi
+      - searxng
+
+  frontend:
+    build: ./frontend
+    container_name: mcp-frontend
+    ports:
+      - "6180:80"
+    depends_on:
+      - backend
+
+  mcp-matrix:
+    build: ./mcp-matrix
+    container_name: mcp-matrix
+    ports:
+      - "6101:6101"
+
+  mcp-hanoi:
+    build: ./mcp-hanoi
+    container_name: mcp-hanoi
+    ports:
+      - "6102:6102"
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: mcp-searxng
+    ports:
+      - "6103:8080"
+    volumes:
+      - ./searxng/config:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:6103/
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
