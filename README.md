@@ -9,6 +9,7 @@ This repository provides a complete, containerized **MCP (Model Context Protocol
 - **Frontend UI** (Nginx static app)
 - **SearxNG** meta-search engine
 - **One-command startup using Docker Compose**
+![MCP Stack in test](./screenshot.png)
 
 ---
 
