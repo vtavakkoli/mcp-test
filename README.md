@@ -1,14 +1,20 @@
 # 🧩 MCP Stack – Multi-Component AI + Tools Demo
 
-This repository provides a complete, containerized **MCP (Model Context Protocol) stack** consisting of:
+This repository provides a complete, containerized **MCP (Model Context
+Protocol) stack** to test small local LLMs with MCP tools and a simple
+web UI.
 
-- **Two MCP tool servers**
-  - `mcp-matrix`: Matrix inversion (NumPy)
-  - `mcp-hanoi`: Tower of Hanoi solver
-- **Backend API** (Node.js)
-- **Frontend UI** (Nginx static app)
-- **SearxNG** meta-search engine
-- **One-command startup using Docker Compose**
+It includes:
+
+-   🧮 **Two MCP tool servers**
+    -   `mcp-matrix`: Matrix inversion (NumPy)
+    -   `mcp-hanoi`: Tower of Hanoi solver
+-   🟩 **Backend API** (Node.js)
+-   🟦 **Frontend UI** (Nginx static app)
+-   🟪 **SearxNG** meta-search engine
+-   🐳 **One-command startup with Docker Compose**
+
+
 ![MCP Stack in test](./screenshot.png)
 
 ---
@@ -96,6 +102,18 @@ Exposed port:
 You can open SearxNG directly at:
 
 - http://localhost:6103
+
+---
+
+## 🧠 Tested Local Models (via Ollama)
+
+The stack works well with:
+
+-   **Qwen3:1.7B**
+-   **Qwen3-VL:2B**
+-   **Ministral-3:3B** (fastest in tests)
+
+All models responded without errors during MCP tool calls.
 
 ---
 
